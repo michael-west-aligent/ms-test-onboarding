@@ -1,0 +1,58 @@
+type Query {
+  info: String!
+  feed: [Link!]!
+  countries: [Country!]!
+}
+
+type Mutation {
+  postLink(url: String!, description: String!): Link!
+  createProduct(
+    product_id: ID!
+    name: String!
+    sku: String!
+    mass: Int!
+    cost: Int!
+    type: ProductType!
+  ): Product!
+}
+
+type Product {
+  product_id: ID!
+  name: String!
+  sku: String!
+  cost: Int!
+  mass: Int!
+  type: ProductType!
+}
+
+enum ProductType {
+  physical
+  digital
+}
+
+type Link {
+  id: ID!
+  description: String!
+  url: String!
+}
+
+type Country {
+  id: Number!
+  country: String!
+  country_is02: String!
+  country_is03: String!
+  states: State!
+}
+
+type State {
+  url: String!
+  resource: String!
+}
+
+# type createProduct {
+#   product_id: Number!
+#   name: String!
+#   cost: Number!
+#   mass: Number!
+#   type: ProductType!
+# }
